@@ -37,6 +37,7 @@ namespace Semaforos
 
         public bool ExibirVerde { get; set; } = true;
         public bool ExibirVermelho { get; set; } = true;
+        public bool ExibirAmarelo { get; set; } = false;
 
         public int Valor
         {
@@ -82,8 +83,19 @@ namespace Semaforos
                 }
                 else if(Tipo == TipoPainel.Amarelo)
                 {
-                    dssEsquerdo.Valor = null;
-                    dssDireito.Valor = null;
+                    if (valor >= 0 && ExibirAmarelo)
+                    {
+                        int leftDigit = (int)(valor / 10);
+                        int rightDigit = valor - leftDigit * 10;
+
+                        dssEsquerdo.Valor = leftDigit;
+                        dssDireito.Valor = rightDigit;
+                    }
+                    else
+                    {
+                        dssEsquerdo.Valor = null;
+                        dssDireito.Valor = null;
+                    }
                 }
             }
         }

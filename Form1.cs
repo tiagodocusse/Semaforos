@@ -9,6 +9,7 @@ namespace Semaforos
 
         private int tempoVerde = 20;
         private int tempoVermelho = 10;
+        private int tempoAmarelo = 2;
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
@@ -18,7 +19,7 @@ namespace Semaforos
 
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)
         {
-            timerAmarelo.Interval = (int)numericUpDown2.Value * 1000;
+            tempoAmarelo = (int)numericUpDown2.Value;
         }
 
         private void numericUpDown3_ValueChanged(object sender, EventArgs e)
@@ -36,6 +37,7 @@ namespace Semaforos
 
             checkBox1.Enabled = !Inicio;
             checkBox2.Enabled = !Inicio;
+            checkBox3.Enabled = !Inicio;
 
             if (Inicio)
             {
@@ -56,7 +58,7 @@ namespace Semaforos
 
                 contadorRegressivo1.Valor = (int)numericUpDown1.Value;
                 tempoVerde = (int)numericUpDown1.Value;
-                timerAmarelo.Interval = (int)numericUpDown2.Value * 1000;
+                tempoAmarelo = (int)numericUpDown2.Value;
                 tempoVermelho = (int)numericUpDown3.Value;
             }
         }
@@ -97,7 +99,7 @@ namespace Semaforos
             else
             {
                 contadorRegressivo1.Tipo = TipoPainel.Amarelo;
-                contadorRegressivo1.Valor = -1;
+                contadorRegressivo1.Valor = tempoAmarelo;
 
                 AcenderLuz(TipoCor.Amarelo);
 
@@ -108,13 +110,19 @@ namespace Semaforos
 
         private void timerAmarelo_Tick(object sender, EventArgs e)
         {
-            timerAmarelo.Stop();
-            contadorRegressivo1.Tipo = TipoPainel.Pare;
+            if (contadorRegressivo1.Valor > 1)
+            {
+                contadorRegressivo1.Valor--;
+            }
+            else
+            {
+                contadorRegressivo1.Tipo = TipoPainel.Pare;
+                contadorRegressivo1.Valor = tempoVermelho;
 
-            AcenderLuz(TipoCor.Vermelho);
-
-            contadorRegressivo1.Valor = tempoVermelho;
-            timerVermelho.Start();
+                AcenderLuz(TipoCor.Vermelho);
+                timerAmarelo.Stop();
+                timerVermelho.Start();
+            }
         }
 
         private void timerVermelho_Tick(object sender, EventArgs e)
@@ -142,6 +150,11 @@ namespace Semaforos
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             contadorRegressivo1.ExibirVermelho = checkBox2.Checked;
+        }
+
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            contadorRegressivo1.ExibirAmarelo = checkBox3.Checked;
         }
     }
 }

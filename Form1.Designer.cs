@@ -45,6 +45,7 @@
             timerVerde = new System.Windows.Forms.Timer(components);
             timerAmarelo = new System.Windows.Forms.Timer(components);
             timerVermelho = new System.Windows.Forms.Timer(components);
+            checkBox3 = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown3).BeginInit();
@@ -101,7 +102,7 @@
             checkBox1.AutoSize = true;
             checkBox1.Checked = true;
             checkBox1.CheckState = CheckState.Checked;
-            checkBox1.Location = new Point(314, 9);
+            checkBox1.Location = new Point(314, 62);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(111, 19);
             checkBox1.TabIndex = 2;
@@ -114,7 +115,7 @@
             checkBox2.AutoSize = true;
             checkBox2.Checked = true;
             checkBox2.CheckState = CheckState.Checked;
-            checkBox2.Location = new Point(314, 34);
+            checkBox2.Location = new Point(314, 12);
             checkBox2.Name = "checkBox2";
             checkBox2.Size = new Size(132, 19);
             checkBox2.TabIndex = 2;
@@ -125,7 +126,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(314, 67);
+            label1.Location = new Point(314, 92);
             label1.Name = "label1";
             label1.Size = new Size(84, 15);
             label1.TabIndex = 3;
@@ -133,7 +134,7 @@
             // 
             // numericUpDown1
             // 
-            numericUpDown1.Location = new Point(432, 59);
+            numericUpDown1.Location = new Point(432, 84);
             numericUpDown1.Maximum = new decimal(new int[] { 99, 0, 0, 0 });
             numericUpDown1.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numericUpDown1.Name = "numericUpDown1";
@@ -145,7 +146,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(314, 96);
+            label2.Location = new Point(314, 121);
             label2.Name = "label2";
             label2.Size = new Size(107, 15);
             label2.TabIndex = 3;
@@ -153,7 +154,7 @@
             // 
             // numericUpDown2
             // 
-            numericUpDown2.Location = new Point(432, 88);
+            numericUpDown2.Location = new Point(432, 113);
             numericUpDown2.Maximum = new decimal(new int[] { 99, 0, 0, 0 });
             numericUpDown2.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numericUpDown2.Name = "numericUpDown2";
@@ -165,7 +166,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(314, 125);
+            label3.Location = new Point(314, 150);
             label3.Name = "label3";
             label3.Size = new Size(112, 15);
             label3.TabIndex = 3;
@@ -173,7 +174,7 @@
             // 
             // numericUpDown3
             // 
-            numericUpDown3.Location = new Point(432, 117);
+            numericUpDown3.Location = new Point(432, 142);
             numericUpDown3.Maximum = new decimal(new int[] { 99, 0, 0, 0 });
             numericUpDown3.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numericUpDown3.Name = "numericUpDown3";
@@ -199,13 +200,24 @@
             // 
             // timerAmarelo
             // 
-            timerAmarelo.Interval = 2000;
+            timerAmarelo.Interval = 1000;
             timerAmarelo.Tick += timerAmarelo_Tick;
             // 
             // timerVermelho
             // 
             timerVermelho.Interval = 1000;
             timerVermelho.Tick += timerVermelho_Tick;
+            // 
+            // checkBox3
+            // 
+            checkBox3.AutoSize = true;
+            checkBox3.Location = new Point(314, 37);
+            checkBox3.Name = "checkBox3";
+            checkBox3.Size = new Size(127, 19);
+            checkBox3.TabIndex = 2;
+            checkBox3.Text = "Contar no Amarelo";
+            checkBox3.UseVisualStyleBackColor = true;
+            checkBox3.CheckedChanged += checkBox3_CheckedChanged;
             // 
             // Form1
             // 
@@ -220,6 +232,7 @@
             Controls.Add(label2);
             Controls.Add(numericUpDown1);
             Controls.Add(label1);
+            Controls.Add(checkBox3);
             Controls.Add(checkBox2);
             Controls.Add(checkBox1);
             Controls.Add(luzVerde);
@@ -256,5 +269,6 @@
         private System.Windows.Forms.Timer timerVerde;
         private System.Windows.Forms.Timer timerAmarelo;
         private System.Windows.Forms.Timer timerVermelho;
+        private CheckBox checkBox3;
     }
 }
